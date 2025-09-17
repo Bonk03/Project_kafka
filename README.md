@@ -10,7 +10,8 @@ Mikołaj Goździelewski 193263
 
 In folder kafka-spark open terminal, then write this commands in exact order:
 
-```docker compose up -d kafka; sets up kafka```
+```docker compose up -d kafka```
+sets up kafka
 
 wait some time untill next command to be sure that kafka is running
 
