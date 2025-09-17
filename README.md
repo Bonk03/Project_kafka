@@ -1,6 +1,6 @@
 # Project_kafka
 
-##Authors
+## Authors
 
 Bartłomiej Bąk 193634
 Mikołaj Goździelewski 193263
