@@ -51,3 +51,57 @@ After each send, it prints a confirmation to the console to be sure that topic w
 If message sending fails (e.g., Kafka connection loss), the producer is reset to None.
 
 The script retries creating a new KafkaProducer until Kafka is available again, then resumes sending logs.
+
+
+
+spark_job.py
+
+This script consumes web access logs from a Kafka topic, aggregates them in real time with Spark Structured Streaming, and continuously outputs the top three most-visited URLs in recent time windows to the console.
+
+1. Kafka Stream Ingestion
+
+Connects to a Kafka broker at kafka:9092.
+
+Subscribes to the topic web_logs.
+
+Reads all available messages from the earliest offset.
+
+Each Kafka message contains a JSON payload with a timestamp, URL, and user ID.
+
+2. JSON Parsing and Data Preparation
+
+Converts the Kafka message value (binary) into a string.
+
+Parses the JSON using a predefined schema (timestamp, url, user_id).
+
+Casts the timestamp into Spark’s native TimestampType.
+
+Keeps only timestamp and url fields for aggregation.
+
+3. Sliding Window Aggregation
+
+Groups log records into 10-minute windows that slide every 5 seconds.
+
+Counts the number of times each URL is accessed within each window.
+
+Ensures results are continuously updated as new events arrive.
+
+4. Filtering Current Results
+
+Filters out old windows, keeping only those that are ending near the current time.
+
+This ensures the aggregation focuses on the most recent user activity.
+
+5. Top URL Ranking
+
+Sorts the filtered results by descending access count.
+
+Selects the top 3 most-visited URLs for the current window.
+
+6. Console Output
+
+Writes results to the console in complete output mode, refreshing every 5 seconds.
+
+Displays the window time range, URL, and count of visits.
+
+Runs continuously until manually stopped.
