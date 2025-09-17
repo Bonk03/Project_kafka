@@ -3,6 +3,7 @@
 ## Authors
 
 Bartłomiej Bąk 193634
+
 Mikołaj Goździelewski 193263
 
 # How to set up project
