@@ -22,7 +22,7 @@ after all these command you should see batches from last 10 minutes with sorted 
 
 # How does it work
 
-producer.py
+## producer.py
 
 This script simulates web server access logs and sends them to an Apache Kafka topic in real time. It ensures that the target topic exists, connects to Kafka with retries (to handle startup delays), and continuously produces JSON-formatted log messages every second.
 
@@ -54,7 +54,7 @@ The script retries creating a new KafkaProducer until Kafka is available again, 
 
 
 
-spark_job.py
+## spark_job.py
 
 This script consumes web access logs from a Kafka topic, aggregates them in real time with Spark Structured Streaming, and continuously outputs the top three most-visited URLs in recent time windows to the console.
 
