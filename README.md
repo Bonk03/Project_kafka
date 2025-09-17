@@ -1,5 +1,10 @@
 # Project_kafka
 
+##Authors
+
+Bartłomiej Bąk 193634
+Mikołaj Goździelewski 193263
+
 # How to set up project
 
 In folder kafka-spark open terminal, then write this commands in exact order:
